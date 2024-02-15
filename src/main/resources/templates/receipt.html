@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Receipt</title>
+</head>
+<body>
+<h2>Hi <span th:text="${order.firstname}"></span></h2>
+You ordered <span th:text="${order.number + ' ' + order.size +' '}"></span>pizza/s<br><br>
+With following toppings;<br>
+<ul>
+    <li th:each="topping : ${order.toppings}" th:text="${topping}"></li>
+</ul>
+
+Order type <span th:text="${order.deliverytype}"></span><br><br>
+Price
+<ul>
+    <li><span th:text="${order.number + ' ' + order.size +' '}" ></span>pizza/s<span th:text="${' '+stotal*order.number}"></span></li>
+    <li>Toppings <span th:text="${#lists.size(order.toppings)+ ' ' +ttotal*order.number }"></span></li>
+    <li>Delivery<span th:text="${' ' + dtotal}"></span></li>
+</ul>
+Your total is  <span th:text="${total}"></span><br><br>
+The order will be delivered to following address if delivery is chosen at <span th:text="${' ' + newTime + ' '}"></span> or you can collect the order at <span th:text="${' ' + newTime}"></span><br><br>
+<span th:text="${order.address}"></span><br><br>
+<form action="/OnlinePizza">
+    <input type=submit value="Make a new order"/>
+</body>
+</html>

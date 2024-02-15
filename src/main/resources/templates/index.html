@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Order Here</title>
+</head>
+<body>
+<h2>User Information</h2>
+<form action="/addOrder" method="get" th:object="${order}">
+    <label for="fname">First Name:</label><br>
+    <input type="text" id="fname" name="fname" th:field="*{firstname}" required><br>
+    <label for="Lname">Last Name:</label><br>
+    <input type="text" id="Lname" name="Lname" th:field="*{lastname}" required><br>
+    <label for="Phone">Phone:</label><br>
+    <input type="String" id="Phone" name="Phone" th:field="*{phone}" required><br>
+    <label for="Address">Address:</label><br>
+    <input type="text" id="Address" name="Address" th:field="*{address}" required><br>
+
+    <h2>Order Information</h2>
+    <h3>Pizza Size</h3>
+    <input type="radio" id="small" name="pizza_size" value="small" th:field="*{size}" required>
+    <label for="small">Small($10)</label><br>
+    <input type="radio" id="medium" name="pizza_size" value="medium" th:field="*{size}" >
+    <label for="medium">Medium($13)</label><br>
+    <input type="radio" id="large" name="pizza_size" value="large" th:field="*{size}" >
+    <label for="large">Large($17)</label><br>
+    <h3>Toppings</h3>
+    <input type="checkbox" id="pepperoni" name="pepperoni" value="pepperoni" th:field="*{toppings}" required>
+    <label for="small">Pepperoni</label><br>
+    <input type="checkbox" id="mushroom" name="mushroom" value="mushroom" th:field="*{toppings}">
+    <label for="medium">Mushrooms</label><br>
+    <input type="checkbox" id="pepper" name="pepper" value="pepper" th:field="*{toppings}">
+    <label for="medium">Peppers</label><br>
+    <input type="checkbox" id="extracheese" name="extracheese" value="extracheese" th:field="*{toppings}">
+    <label for="medium">Extra Cheese</label><br>
+    <input type="checkbox" id="olives" name="olives" value="olives" th:field="*{toppings}">
+    <label for="large">Olives</label><br><br>
+    <label for="number">Number of Pizzas:</label><br>
+    <input type="text" id="number" name="number"  th:field="*{number}" min="1" required><br><br>
+    <label for="dtype">Order Type:</label>
+    <select id="dtype" name="dtype" th:field="*{deliverytype}">
+        <option value="Pickup">Pick Up</option>
+        <option value="Delivery">Delivery</option>
+    </select><br><br>
+    <input type=submit value="Add Order" />
+</form>
+</body>
+</html>
